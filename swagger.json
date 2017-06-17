@@ -1,0 +1,241 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Customer service api.",
+    "version" : "v1",
+    "title" : "Customer Service api",
+    "contact" : {
+      "name" : "Amit Kaushal",
+      "email" : "amit.kaushal@mindtree.com"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host" : "http://localhost:8081",
+  "basePath" : "/customers",
+  "tags" : [ {
+    "name" : "customers",
+    "description" : "This resource contains CRUD opeartions for Customer"
+  } ],
+  "schemes" : [ "http" ],
+  "paths" : {
+    "/customers" : {
+      "get" : {
+        "tags" : [ "customers" ],
+        "summary" : "Getting all cutomers",
+        "description" : "This will retrieve all Customer",
+        "operationId" : "getCustomers",
+        "produces" : [ "application/xml", "application/json" ],
+        "parameters" : [ {
+          "name" : "lastName",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Customer"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "customers" ],
+        "summary" : "Posting",
+        "description" : "This will add a customer",
+        "operationId" : "addCustomers",
+        "produces" : [ "application/xml", "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Customer"
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "successful operation"
+          }
+        }
+      }
+    },
+    "/customers/{Id}" : {
+      "put" : {
+        "tags" : [ "customers" ],
+        "summary" : "updating a customer",
+        "description" : "This will update a customer",
+        "operationId" : "updateCustomers",
+        "produces" : [ "application/xml", "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Customer"
+          }
+        }, {
+          "name" : "Id",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "successful operation"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "customers" ],
+        "summary" : "removing a customer",
+        "description" : "This will remove a customer",
+        "operationId" : "deleteCustomers",
+        "produces" : [ "application/xml", "application/json" ],
+        "parameters" : [ {
+          "name" : "Id",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "successful operation"
+          }
+        }
+      }
+    },
+    "/customers/{id}" : {
+      "get" : {
+        "tags" : [ "customers" ],
+        "summary" : "Getting matching customer",
+        "description" : "This will retrieve customer based on id",
+        "operationId" : "getCustomer",
+        "produces" : [ "application/xml", "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/Customer"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Address" : {
+      "type" : "object",
+      "properties" : {
+        "doorNo" : {
+          "type" : "string"
+        },
+        "street" : {
+          "type" : "string"
+        },
+        "location" : {
+          "type" : "string"
+        },
+        "city" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Customer" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "title" : {
+          "type" : "string"
+        },
+        "firstName" : {
+          "type" : "string"
+        },
+        "lastName" : {
+          "type" : "string"
+        },
+        "dateofBirth" : {
+          "type" : "string"
+        },
+        "countryofResident" : {
+          "type" : "string"
+        },
+        "nationality" : {
+          "type" : "string"
+        },
+        "customerRelation" : {
+          "type" : "string"
+        },
+        "preferredLangauage" : {
+          "type" : "string"
+        },
+        "skywardsNumber" : {
+          "type" : "string"
+        },
+        "preferences" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Preference"
+          }
+        },
+        "passport" : {
+          "$ref" : "#/definitions/Passport"
+        },
+        "address" : {
+          "$ref" : "#/definitions/Address"
+        }
+      }
+    },
+    "Passport" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "passportNumber" : {
+          "type" : "string"
+        },
+        "nationality" : {
+          "type" : "string"
+        },
+        "countryOfIssue" : {
+          "type" : "string"
+        },
+        "expiryDate" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Preference" : {
+      "type" : "object",
+      "properties" : {
+        "types" : {
+          "type" : "string"
+        },
+        "values" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

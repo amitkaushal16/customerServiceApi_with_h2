@@ -1,0 +1,449 @@
+#%RAML 0.8
+title: customerService
+version: "0.0.1"
+baseUri: /
+/customers: 
+    displayName: Customers Resource
+    description: Customers Resource
+    post: 
+        description: addCustomers
+        body: 
+            application/json: 
+                schema: |
+                    {
+                      "type" : "object",
+                      "id" : "urn:jsonschema:com:mindtree:model:Customer",
+                      "properties" : {
+                        "id" : {
+                          "type" : "integer"
+                        },
+                        "title" : {
+                          "type" : "string"
+                        },
+                        "firstName" : {
+                          "type" : "string"
+                        },
+                        "lastName" : {
+                          "type" : "string"
+                        },
+                        "dateofBirth" : {
+                          "type" : "string"
+                        },
+                        "countryofResident" : {
+                          "type" : "string"
+                        },
+                        "nationality" : {
+                          "type" : "string"
+                        },
+                        "customerRelation" : {
+                          "type" : "string"
+                        },
+                        "preferredLangauage" : {
+                          "type" : "string"
+                        },
+                        "skywardsNumber" : {
+                          "type" : "string"
+                        },
+                        "preferences" : {
+                          "type" : "array",
+                          "items" : {
+                            "type" : "object",
+                            "id" : "urn:jsonschema:com:mindtree:model:Preference",
+                            "properties" : {
+                              "types" : {
+                                "type" : "string"
+                              },
+                              "values" : {
+                                "type" : "string"
+                              }
+                            }
+                          }
+                        },
+                        "passport" : {
+                          "type" : "object",
+                          "id" : "urn:jsonschema:com:mindtree:model:Passport",
+                          "properties" : {
+                            "id" : {
+                              "type" : "integer"
+                            },
+                            "passportNumber" : {
+                              "type" : "string"
+                            },
+                            "nationality" : {
+                              "type" : "string"
+                            },
+                            "countryOfIssue" : {
+                              "type" : "string"
+                            },
+                            "expiryDate" : {
+                              "type" : "string"
+                            }
+                          }
+                        },
+                        "address" : {
+                          "type" : "object",
+                          "id" : "urn:jsonschema:com:mindtree:model:Address",
+                          "properties" : {
+                            "doorNo" : {
+                              "type" : "string"
+                            },
+                            "street" : {
+                              "type" : "string"
+                            },
+                            "location" : {
+                              "type" : "string"
+                            },
+                            "city" : {
+                              "type" : "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+        responses: 
+            "200": 
+                description: Successful Response
+                body: 
+                    application/xml: 
+                        schema: |
+                            {
+                              "type" : "null"
+                            }
+    get: 
+        description: getCustomers
+        queryParameters: 
+            value: 
+                displayName: value
+                type: string
+                required: false
+                repeat: false
+        responses: 
+            "200": 
+                description: Successful Response
+                body: 
+                    application/xml: 
+                        schema: |
+                            {
+                              "type" : "array",
+                              "items" : {
+                                "type" : "object",
+                                "id" : "urn:jsonschema:com:mindtree:model:Customer",
+                                "properties" : {
+                                  "id" : {
+                                    "type" : "integer"
+                                  },
+                                  "title" : {
+                                    "type" : "string"
+                                  },
+                                  "firstName" : {
+                                    "type" : "string"
+                                  },
+                                  "lastName" : {
+                                    "type" : "string"
+                                  },
+                                  "dateofBirth" : {
+                                    "type" : "string"
+                                  },
+                                  "countryofResident" : {
+                                    "type" : "string"
+                                  },
+                                  "nationality" : {
+                                    "type" : "string"
+                                  },
+                                  "customerRelation" : {
+                                    "type" : "string"
+                                  },
+                                  "preferredLangauage" : {
+                                    "type" : "string"
+                                  },
+                                  "skywardsNumber" : {
+                                    "type" : "string"
+                                  },
+                                  "preferences" : {
+                                    "type" : "array",
+                                    "items" : {
+                                      "type" : "object",
+                                      "id" : "urn:jsonschema:com:mindtree:model:Preference",
+                                      "properties" : {
+                                        "types" : {
+                                          "type" : "string"
+                                        },
+                                        "values" : {
+                                          "type" : "string"
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "passport" : {
+                                    "type" : "object",
+                                    "id" : "urn:jsonschema:com:mindtree:model:Passport",
+                                    "properties" : {
+                                      "id" : {
+                                        "type" : "integer"
+                                      },
+                                      "passportNumber" : {
+                                        "type" : "string"
+                                      },
+                                      "nationality" : {
+                                        "type" : "string"
+                                      },
+                                      "countryOfIssue" : {
+                                        "type" : "string"
+                                      },
+                                      "expiryDate" : {
+                                        "type" : "string"
+                                      }
+                                    }
+                                  },
+                                  "address" : {
+                                    "type" : "object",
+                                    "id" : "urn:jsonschema:com:mindtree:model:Address",
+                                    "properties" : {
+                                      "doorNo" : {
+                                        "type" : "string"
+                                      },
+                                      "street" : {
+                                        "type" : "string"
+                                      },
+                                      "location" : {
+                                        "type" : "string"
+                                      },
+                                      "city" : {
+                                        "type" : "string"
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+    /{Id}: 
+        displayName: A specific Id
+        description: "{Id} Resource"
+        uriParameters: 
+            Id: 
+                displayName: Id
+                type: integer
+                required: true
+                repeat: false
+        put: 
+            description: updateCustomers
+            body: 
+                application/json: 
+                    schema: |
+                        {
+                          "type" : "object",
+                          "id" : "urn:jsonschema:com:mindtree:model:Customer",
+                          "properties" : {
+                            "id" : {
+                              "type" : "integer"
+                            },
+                            "title" : {
+                              "type" : "string"
+                            },
+                            "firstName" : {
+                              "type" : "string"
+                            },
+                            "lastName" : {
+                              "type" : "string"
+                            },
+                            "dateofBirth" : {
+                              "type" : "string"
+                            },
+                            "countryofResident" : {
+                              "type" : "string"
+                            },
+                            "nationality" : {
+                              "type" : "string"
+                            },
+                            "customerRelation" : {
+                              "type" : "string"
+                            },
+                            "preferredLangauage" : {
+                              "type" : "string"
+                            },
+                            "skywardsNumber" : {
+                              "type" : "string"
+                            },
+                            "preferences" : {
+                              "type" : "array",
+                              "items" : {
+                                "type" : "object",
+                                "id" : "urn:jsonschema:com:mindtree:model:Preference",
+                                "properties" : {
+                                  "types" : {
+                                    "type" : "string"
+                                  },
+                                  "values" : {
+                                    "type" : "string"
+                                  }
+                                }
+                              }
+                            },
+                            "passport" : {
+                              "type" : "object",
+                              "id" : "urn:jsonschema:com:mindtree:model:Passport",
+                              "properties" : {
+                                "id" : {
+                                  "type" : "integer"
+                                },
+                                "passportNumber" : {
+                                  "type" : "string"
+                                },
+                                "nationality" : {
+                                  "type" : "string"
+                                },
+                                "countryOfIssue" : {
+                                  "type" : "string"
+                                },
+                                "expiryDate" : {
+                                  "type" : "string"
+                                }
+                              }
+                            },
+                            "address" : {
+                              "type" : "object",
+                              "id" : "urn:jsonschema:com:mindtree:model:Address",
+                              "properties" : {
+                                "doorNo" : {
+                                  "type" : "string"
+                                },
+                                "street" : {
+                                  "type" : "string"
+                                },
+                                "location" : {
+                                  "type" : "string"
+                                },
+                                "city" : {
+                                  "type" : "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+            responses: 
+                "200": 
+                    description: Successful Response
+                    body: 
+                        application/xml: 
+                            schema: |
+                                {
+                                  "type" : "null"
+                                }
+        delete: 
+            description: deleteCustomers
+            responses: 
+                "200": 
+                    description: Successful Response
+                    body: 
+                        application/xml: 
+                            schema: |
+                                {
+                                  "type" : "null"
+                                }
+    /{id}: 
+        displayName: A specific id
+        description: "{id} Resource"
+        uriParameters: 
+            id: 
+                displayName: id
+                type: integer
+                required: true
+                repeat: false
+        get: 
+            description: getCustomer
+            responses: 
+                "200": 
+                    description: Successful Response
+                    body: 
+                        application/xml: 
+                            schema: |
+                                {
+                                  "type" : "object",
+                                  "id" : "urn:jsonschema:com:mindtree:model:Customer",
+                                  "properties" : {
+                                    "id" : {
+                                      "type" : "integer"
+                                    },
+                                    "title" : {
+                                      "type" : "string"
+                                    },
+                                    "firstName" : {
+                                      "type" : "string"
+                                    },
+                                    "lastName" : {
+                                      "type" : "string"
+                                    },
+                                    "dateofBirth" : {
+                                      "type" : "string"
+                                    },
+                                    "countryofResident" : {
+                                      "type" : "string"
+                                    },
+                                    "nationality" : {
+                                      "type" : "string"
+                                    },
+                                    "customerRelation" : {
+                                      "type" : "string"
+                                    },
+                                    "preferredLangauage" : {
+                                      "type" : "string"
+                                    },
+                                    "skywardsNumber" : {
+                                      "type" : "string"
+                                    },
+                                    "preferences" : {
+                                      "type" : "array",
+                                      "items" : {
+                                        "type" : "object",
+                                        "id" : "urn:jsonschema:com:mindtree:model:Preference",
+                                        "properties" : {
+                                          "types" : {
+                                            "type" : "string"
+                                          },
+                                          "values" : {
+                                            "type" : "string"
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "passport" : {
+                                      "type" : "object",
+                                      "id" : "urn:jsonschema:com:mindtree:model:Passport",
+                                      "properties" : {
+                                        "id" : {
+                                          "type" : "integer"
+                                        },
+                                        "passportNumber" : {
+                                          "type" : "string"
+                                        },
+                                        "nationality" : {
+                                          "type" : "string"
+                                        },
+                                        "countryOfIssue" : {
+                                          "type" : "string"
+                                        },
+                                        "expiryDate" : {
+                                          "type" : "string"
+                                        }
+                                      }
+                                    },
+                                    "address" : {
+                                      "type" : "object",
+                                      "id" : "urn:jsonschema:com:mindtree:model:Address",
+                                      "properties" : {
+                                        "doorNo" : {
+                                          "type" : "string"
+                                        },
+                                        "street" : {
+                                          "type" : "string"
+                                        },
+                                        "location" : {
+                                          "type" : "string"
+                                        },
+                                        "city" : {
+                                          "type" : "string"
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
